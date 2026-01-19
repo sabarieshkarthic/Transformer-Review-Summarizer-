@@ -98,6 +98,9 @@ The model follows a **standard Transformer encoder–decoder design**.
 ## References:
   - "Attention Is All You Need"
   - "The Illustrated Transformer - "Alammar J"
+## Credits
+ - Dhiyanesh B
+ - Sabariesh Karthic A M
 
 
 
