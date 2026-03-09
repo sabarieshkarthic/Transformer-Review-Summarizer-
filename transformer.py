@@ -15,8 +15,8 @@ class Transformer:
         for key,val in self.embeded.word_to_token.items():
             self.token_to_word[val]=key
             
-        self.input_mat=InputEmbedding()
-        self.output_mat=InputEmbedding()
+        self.inp_mat=InputEmbedding()
+        self.out_mat=InputEmbedding()
         
         self.EncoderArray=[]
         self.DecoderArray=[]
@@ -85,10 +85,10 @@ def Train(self,train_data,epochs=2000,lr=0.05):
         total_loss=0.0
         for sample in train_data:
             summary_words=sample["summary"].lower().split()
-            dec_inp="<start> "+" ".join(summary_words[:-1])
+            dec_inp="<start> "+" ".join(summary_words[:-1])+" "+"<end>"
             dec_tar=" ".join(summary_words)
             y_pred=self.RunTransformer(sample["reviews"],dec_inp)
-            loss=self.Loss_func(y_pred,dec_tar)
+            loss=self.Loss_function(y_pred,dec_tar)
             self.Backpropagate(lr)
             total_loss+=loss
         
@@ -96,7 +96,7 @@ def Train(self,train_data,epochs=2000,lr=0.05):
         if epoch%100==0:
             print(f"Epoch {epoch} | Avg Loss: {avg_loss:.6f}")
         if avg_loss<0.001:
-            print(f"Overfitting achieved at epoch {epoch}")
+            print(f"Overfitting  at epoch {epoch}")
             break
 
 def Predict(self,review,max_len=10):
@@ -147,4 +147,5 @@ if __name__ == "__main__":
         print("Pred   :", transformer.Predict(d["reviews"], max_len=8))
         print("Target :", d["summary"])
         print("------")
+
         
