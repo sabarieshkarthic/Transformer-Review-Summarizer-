@@ -89,7 +89,7 @@ The model follows a **standard Transformer encoder–decoder design**.
 |---------|------|
 | Encoder blocks | 1 |
 | Decoder blocks | 1 |
-| Optimizer | Gradient Descent |
+| Optimizer | Stochastic Gradient Descent |
 | Learning rate | 0.01 |
 | Epochs | Up to 2000 |
 | Loss function | Cross-Entropy |
