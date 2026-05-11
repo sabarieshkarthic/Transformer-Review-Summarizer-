@@ -59,8 +59,8 @@ class CrossAttention:
         self.d_weight_K=np.dot(self.Key.T,self.d_K)
         self.d_weight_V=np.dot(self.Key.T,self.d_V)
        
-        self.d_Query=np.dot(self.d_Q,self.d_weight_Q.T)
-        self.d_Key=(np.dot(self.d_K,self.weight_K.T)+np.dot(self.d_V,self.d_weight_V.T))
+        self.d_Query=np.dot(self.d_Q,self.weight_Q.T)
+        self.d_Key=(np.dot(self.d_K,self.weight_K.T)+np.dot(self.d_V,self.weight_V.T))
        
         return self.d_Key,self.d_Query
    
